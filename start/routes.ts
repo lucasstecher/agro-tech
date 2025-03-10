@@ -8,7 +8,7 @@ const PlantingsController = () => import('#controllers/planting_controller')
 
 //OpenAPI Routes
 router.get('/openapi', async () => {
-  return AutoSwagger.default.docs(router.toJSON(), openapi)
+  return AutoSwagger.default.json(router.toJSON(), openapi)
 })
 router.get('/docs', async () => {
   return AutoSwagger.default.scalar('/openapi')
