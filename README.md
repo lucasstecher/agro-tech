@@ -71,35 +71,35 @@ O banco de dados possui três entidades principais: **Produtores (Producers)**, 
 
 - Cada produtor **pode ter várias fazendas** (1:N).
 - **Campos**:
-  - id _(UUID, PK)_
-  - name _(string)_
-  - documentType _(CPF ou CNPJ)_
-  - document _(string do documento)_
-  - city _(string)_
-  - state _(string)_
+  - id _(UUID, PK)
+  - name (string)
+  - documentType (CPF ou CNPJ)
+  - document (string do documento)
+  - city (string)
+  - state (string)
 
 #### **2. Properties (Fazendas)**
 
 - Cada fazenda **pertence a um único produtor** (`producer_id`).
 - Cada fazenda **pode ter vários plantios** (1:N).
 - **Campos**:
-  - id _(UUID, PK)_
-  - producer*id *(UUID, FK -> Producers)_
-  - farm*name *(string)_
-  - city _(string)_
-  - state _(string)_
-  - total*area _(float)_
-  - arable*area _(float)_: Área cultivável
-  - vegetation*area _(float)_: Área de vegetação
+  - id (UUID, PK)
+  - producer_id (UUID, FK -> Producers)
+  - farm_name (string)
+  - city (string)
+  - state (string)
+  - total_area (float)
+  - arable_area (float): Área cultivável
+  - vegetation_area (float): Área de vegetação
 
 #### **3. Plantings (Plantios)**
 
 - Cada plantio **pertence a uma única fazenda** (`property_id`).
 - **Campos**:
-  - id _(UUID, PK)_
-  - property*id *(UUID, FK -> Producers)\_
-  - harvest _(string)_: Safra
-  - culture _(string)_: Cultura
+  - id (UUID, PK)
+  - property*id *(UUID, FK -> Producers)
+  - harvest (string): Safra
+  - culture (string): Cultura
 
 ---
 
