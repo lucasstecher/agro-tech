@@ -20,11 +20,40 @@ Para realizar as requisições pela API, utilize Postman, Insomnia ou pelo próp
 
 ## 📌 **Instalação e Configuração**
 
+### Para rodar através do docker:
+1. **Inclua todas as variáveis necessárias em seu .env:**
+```sh
+TZ=UTC
+PORT=3333
+APP_KEY=4vzgfBBrc8PI8WVqLx9QM2wTnZXYuo6r
+NODE_ENV=production
+DB_HOST=database
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=1234
+DB_DATABASE=postgres
+HOST=0.0.0.0 -> É necessário deixar o host com este valor para funcionar corretamente
+LOG_LEVEL=info
+```
+
+2. **Abra seu terminal e digite o comando para subir o contâiner do docker:**
+```sh
+docker compose up --build
+```
+
+3. **Feito isso, sua aplicação já deve estar rodando! No terminal irá aparecer uma mensagem semelhante a esta:**
+```sh
+app_api | {"level":30,"time":1741618511020,"pid":1,"hostname":"db91f93a1693","msg":"started HTTP server on 0.0.0.0:3333"}
+```
+---
+
+### Para rodar localmente:
+
 ### 🔹 **Pré-requisitos**
 
 Antes de iniciar, certifique-se de ter instalado:
 
-- **Node.js 18+**
+- **Node.js 20+**
 - **Docker e Docker Compose**
 - **PostgreSQL**
 - **PNPM (ou npm/yarn, caso prefira)**
