@@ -154,7 +154,7 @@ Abaixo estão as principais rotas do sistema.
 | **GET**    | `/plantings/property/:id` | Lista os plantios de uma fazenda | -                                          |
 | **GET**    | `/plantings/:id`            | Busca um plantio pelo ID         | -                                          |
 | **POST**   | `/plantings/property/:id` | Cria um novo plantio             | `{ "culture": "Soja", "harvest": "2024" }` |
-| **PUT**    | `/plantings/:id`            | Atualiza um plantio              | `{ "culture": "Milho" }`                   |
+| **PUT**    | `/plantings/:id`            | Atualiza um plantio pelo ID              | `{ "culture": "Milho" }`                   |
 | **DELETE** | `/plantings/:id`            | Remove um plantio                | -                                          |
 
 ---
