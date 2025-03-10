@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:17.4-alpine
+    container_name: api_database
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: trust
+        DB_HOST: ${DB_HOST}
+        DB_PORT: ${DB_PORT}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_DATABASE: ${DB_DATABASE}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - api_network
+
+  app_api:
+    build: .
+    container_name: app_api
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - database
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT}
+      APP_KEY: ${APP_KEY}
+      HOST: ${HOST}
+      LOG_LEVEL: ${LOG_LEVEL}
+      DB_HOST: database
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+    command: bash -c "node build/ace migration:run --force && node build/bin/server.js"
+    volumes:
+      - .:/app
+
+    networks:
+      - api_network
+
+volumes:
+  db_data:
+
+networks:
+  api_network:
+    driver: bridge
