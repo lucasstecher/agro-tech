@@ -97,7 +97,7 @@ O banco de dados possui três entidades principais: **Produtores (Producers)**, 
 - Cada plantio **pertence a uma única fazenda** (`property_id`).
 - **Campos**:
   - id (UUID, PK)
-  - property_id *(UUID, FK -> Producers)
+  - property_id (UUID, FK -> Producers)
   - harvest (string): Safra
   - culture (string): Cultura
 
