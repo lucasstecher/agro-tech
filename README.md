@@ -122,53 +122,60 @@ O banco de dados possui três entidades principais: **Produtores (Producers)**, 
 ---
 
 ## 📚 **Rotas da API**
+
 Abaixo estão as principais rotas do sistema.
 
 ### 🔹 **Produtores (`/producers`)**
-| Método  | Rota              | Descrição                     | Exemplo Body |
-|---------|-------------------|-------------------------------|--------------|
-| **GET**  | `/producers`       | Lista todos os produtores     | -            |
-| **GET**  | `/producers/:id`   | Busca um produtor pelo ID     | -            |
-| **POST** | `/producers`       | Cria um novo produtor         | `{ "name": "João", "documentType": "CPF", "document": "12345678900" }` |
-| **PUT**  | `/producers/:id`   | Atualiza um produtor          | `{ "name": "Maria" }` |
-| **DELETE** | `/producers/:id` | Remove um produtor            | -            |
+
+| Método     | Rota             | Descrição                 | Exemplo Body                                                           |
+| ---------- | ---------------- | ------------------------- | ---------------------------------------------------------------------- |
+| **GET**    | `/producers`     | Lista todos os produtores | -                                                                      |
+| **GET**    | `/producers/:id` | Busca um produtor pelo ID | -                                                                      |
+| **POST**   | `/producers`     | Cria um novo produtor     | `{ "name": "João", "documentType": "CPF", "document": "12345678900" }` |
+| **PUT**    | `/producers/:id` | Atualiza um produtor      | `{ "name": "Maria" }`                                                  |
+| **DELETE** | `/producers/:id` | Remove um produtor        | -                                                                      |
 
 ---
 
 ### 🔹 **Fazendas (`/properties`)**
-| Método  | Rota                           | Descrição                         | Exemplo Body |
-|---------|--------------------------------|-----------------------------------|--------------|
-| **GET**  | `/producers/:id/properties`   | Lista fazendas de um produtor    | -            |
-| **GET**  | `/properties/:id`             | Busca uma fazenda pelo ID        | -            |
-| **POST** | `/producers/:id/properties`   | Cria uma nova fazenda            | `{ "farm_name": "Fazenda 1", "city": "SP", "state": "SP", "total_area": 100, "arable_area": 60, "vegetation_area": 40 }` |
-| **PUT**  | `/properties/:id`             | Atualiza uma fazenda             | `{ "farm_name": "Fazenda Nova" }` |
-| **DELETE** | `/properties/:id`           | Remove uma fazenda               | -            |
+
+| Método     | Rota                        | Descrição                     | Exemplo Body                                                                                                             |
+| ---------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **GET**    | `/producers/:id/properties` | Lista fazendas de um produtor | -                                                                                                                        |
+| **GET**    | `/properties/:id`           | Busca uma fazenda pelo ID     | -                                                                                                                        |
+| **POST**   | `/producers/:id/properties` | Cria uma nova fazenda         | `{ "farm_name": "Fazenda 1", "city": "SP", "state": "SP", "total_area": 100, "arable_area": 60, "vegetation_area": 40 }` |
+| **PUT**    | `/properties/:id`           | Atualiza uma fazenda          | `{ "farm_name": "Fazenda Nova" }`                                                                                        |
+| **DELETE** | `/properties/:id`           | Remove uma fazenda            | -                                                                                                                        |
 
 ---
 
 ### 🔹 **Plantios (`/plantings`)**
-| Método  | Rota                           | Descrição                         | Exemplo Body |
-|---------|--------------------------------|-----------------------------------|--------------|
-| **GET**  | `/properties/:id/plantings`   | Lista os plantios de uma fazenda | -            |
-| **GET**  | `/plantings/:id`              | Busca um plantio pelo ID         | -            |
-| **POST** | `/properties/:id/plantings`   | Cria um novo plantio             | `{ "culture": "Soja", "harvest": "2024" }` |
-| **PUT**  | `/plantings/:id`              | Atualiza um plantio              | `{ "culture": "Milho" }` |
-| **DELETE** | `/plantings/:id`            | Remove um plantio                | -            |
+
+| Método     | Rota                        | Descrição                        | Exemplo Body                               |
+| ---------- | --------------------------- | -------------------------------- | ------------------------------------------ |
+| **GET**    | `/properties/:id/plantings` | Lista os plantios de uma fazenda | -                                          |
+| **GET**    | `/plantings/:id`            | Busca um plantio pelo ID         | -                                          |
+| **POST**   | `/properties/:id/plantings` | Cria um novo plantio             | `{ "culture": "Soja", "harvest": "2024" }` |
+| **PUT**    | `/plantings/:id`            | Atualiza um plantio              | `{ "culture": "Milho" }`                   |
+| **DELETE** | `/plantings/:id`            | Remove um plantio                | -                                          |
 
 ---
 
 ## 📊 **Dashboard & Estatísticas**
-| Método  | Rota                          | Descrição                                       |
-|---------|--------------------------------|-------------------------------------------------|
-| **GET**  | `/dashboard/total-stats`      | Retorna total de fazendas e hectares cadastrados |
-| **GET**  | `/dashboard/land-use-stats`   | Retorna percentual de área agricultável e vegetação |
-| **GET**  | `/dashboard/by-state`         | Retorna número de fazendas por estado           |
-| **GET**  | `/dashboard/by-crop`          | Retorna número de culturas plantadas |
+
+| Método  | Rota                        | Descrição                                           |
+| ------- | --------------------------- | --------------------------------------------------- |
+| **GET** | `/dashboard/total-stats`    | Retorna total de fazendas e hectares cadastrados    |
+| **GET** | `/dashboard/land-use-stats` | Retorna percentual de área agricultável e vegetação |
+| **GET** | `/dashboard/by-state`       | Retorna número de fazendas por estado               |
+| **GET** | `/dashboard/by-crop`        | Retorna número de culturas plantadas                |
 
 ---
 
 ## 🛠 **Rodando Testes**
+
 Antes de rodar os testes, execute as **seeders** na seguinte ordem:
+
 ```sh
 node ace db:seed --files "database/seeders/ProducerSeeder.ts"
 node ace db:seed --files "database/seeders/PropertySeeder.ts"
@@ -180,6 +187,7 @@ Agora, execute os **testes de unidade e integração**:
 ```sh
 node ace test
 ```
+
 ---
 
 ## 📜 **Documentação OpenAPI**
@@ -187,11 +195,13 @@ node ace test
 A API conta com documentação **OpenAPI (Swagger)** gerada automaticamente.
 
 Gere a documentação:
+
 ```sh
 node ace generate:swagger
-````
+```
 
 Acesse no navegador:
+
 ```sh
 http://localhost:3333/docs
 ```
