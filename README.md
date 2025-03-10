@@ -71,9 +71,9 @@ O banco de dados possui três entidades principais: **Produtores (Producers)**, 
 
 - Cada produtor **pode ter várias fazendas** (1:N).
 - **Campos**:
-  - id _(UUID, PK)
+  - id (UUID, PK)
   - name (string)
-  - documentType (CPF ou CNPJ)
+  - document_type (CPF ou CNPJ)
   - document (string do documento)
   - city (string)
   - state (string)
@@ -141,8 +141,8 @@ Abaixo estão as principais rotas do sistema.
 | ---------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | **GET**    | `/producers/:id/properties` | Lista fazendas de um produtor | -                                                                                                                        |
 | **GET**    | `/properties/:id`           | Busca uma fazenda pelo ID     | -                                                                                                                        |
-| **POST**   | `/producers/:id/properties` | Cria uma nova fazenda         | `{ "farm_name": "Fazenda 1", "city": "SP", "state": "SP", "total_area": 100, "arable_area": 60, "vegetation_area": 40 }` |
-| **PUT**    | `/properties/:id`           | Atualiza uma fazenda          | `{ "farm_name": "Fazenda Nova" }`                                                                                        |
+| **POST**   | `/producers/:id/properties` | Cria uma nova fazenda         | `{ "farmName": "Fazenda 1", "city": "SP", "state": "SP", "totalArea": 100, "arableArea": 60, "vegetationArea": 40 }` |
+| **PUT**    | `/properties/:id`           | Atualiza uma fazenda          | `{ "farmName": "Fazenda Nova" }`                                                                                        |
 | **DELETE** | `/properties/:id`           | Remove uma fazenda            | -                                                                                                                        |
 
 ---
