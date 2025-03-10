@@ -5,6 +5,7 @@ export default {
   path: path.dirname(url.fileURLToPath(import.meta.url)) + '/../',
   snakeCase: true,
   tagIndex: 1,
+  productionEnv: 'production',
   info: {
     title: 'Brain Agriculture',
     version: '1.0.0',
