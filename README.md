@@ -1,5 +1,3 @@
-# curly-memory
-
 # 🌱 Gerenciador de Produtores Rurais
 
 Bem-vindo ao **Gerenciador de Produtores Rurais**, um sistema desenvolvido em **Node.js com AdonisJS** para cadastro e gerenciamento de produtores, fazendas e culturas plantadas.
