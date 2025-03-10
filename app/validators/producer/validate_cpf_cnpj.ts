@@ -10,5 +10,5 @@ export const validateCpfCnpj = vine.createRule((value) => {
   if (cleanDocument.length === 14 && isValidCNPJ(cleanDocument)) {
     return value
   }
-  throw new Error("CPF ou CNPJ inválido.")
+  throw new Error('CPF ou CNPJ inválido.')
 })

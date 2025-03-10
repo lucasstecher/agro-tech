@@ -7,6 +7,6 @@ export const updatePropertyValidator = vine.compile(
     state: vine.string().trim().maxLength(2).optional(),
     totalArea: vine.number().min(0.1).optional(),
     arableArea: vine.number().min(0).optional(),
-    vegetationArea: vine.number().min(0).optional()
+    vegetationArea: vine.number().min(0).optional(),
   })
 )
