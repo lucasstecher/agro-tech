@@ -84,13 +84,13 @@ O banco de dados possui três entidades principais: **Produtores (Producers)**, 
 - Cada fazenda **pode ter vários plantios** (1:N).
 - **Campos**:
   - id _(UUID, PK)_
-  - producer*id *(UUID, FK -> Producers)\_
-  - farm*name *(string)\_
+  - producer*id *(UUID, FK -> Producers)_
+  - farm*name *(string)_
   - city _(string)_
   - state _(string)_
-  - total*area *(float)\_
-  - arable*area *(float)\_: Área cultivável
-  - vegetation*area *(float)\_: Área de vegetação
+  - total*area _(float)_
+  - arable*area _(float)_: Área cultivável
+  - vegetation*area _(float)_: Área de vegetação
 
 #### **3. Plantings (Plantios)**
 
