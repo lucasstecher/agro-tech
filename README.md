@@ -139,9 +139,9 @@ Abaixo estão as principais rotas do sistema.
 
 | Método     | Rota                        | Descrição                     | Exemplo Body                                                                                                             |
 | ---------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **GET**    | `/producers/:id/properties` | Lista fazendas de um produtor | -                                                                                                                        |
+| **GET**    | `/properties/producer/:id` | Lista fazendas de um produtor | -                                                                                                                        |
 | **GET**    | `/properties/:id`           | Busca uma fazenda pelo ID     | -                                                                                                                        |
-| **POST**   | `/producers/:id/properties` | Cria uma nova fazenda         | `{ "farmName": "Fazenda 1", "city": "SP", "state": "SP", "totalArea": 100, "arableArea": 60, "vegetationArea": 40 }` |
+| **POST**   | `/properties/producer/:id` | Cria uma nova fazenda         | `{ "farmName": "Fazenda 1", "city": "SP", "state": "SP", "totalArea": 100, "arableArea": 60, "vegetationArea": 40 }` |
 | **PUT**    | `/properties/:id`           | Atualiza uma fazenda          | `{ "farmName": "Fazenda Nova" }`                                                                                        |
 | **DELETE** | `/properties/:id`           | Remove uma fazenda            | -                                                                                                                        |
 
@@ -151,9 +151,9 @@ Abaixo estão as principais rotas do sistema.
 
 | Método     | Rota                        | Descrição                        | Exemplo Body                               |
 | ---------- | --------------------------- | -------------------------------- | ------------------------------------------ |
-| **GET**    | `/properties/:id/plantings` | Lista os plantios de uma fazenda | -                                          |
+| **GET**    | `/plantings/property/:id` | Lista os plantios de uma fazenda | -                                          |
 | **GET**    | `/plantings/:id`            | Busca um plantio pelo ID         | -                                          |
-| **POST**   | `/properties/:id/plantings` | Cria um novo plantio             | `{ "culture": "Soja", "harvest": "2024" }` |
+| **POST**   | `/plantings/property/:id` | Cria um novo plantio             | `{ "culture": "Soja", "harvest": "2024" }` |
 | **PUT**    | `/plantings/:id`            | Atualiza um plantio              | `{ "culture": "Milho" }`                   |
 | **DELETE** | `/plantings/:id`            | Remove um plantio                | -                                          |
 
@@ -163,8 +163,8 @@ Abaixo estão as principais rotas do sistema.
 
 | Método  | Rota                        | Descrição                                           |
 | ------- | --------------------------- | --------------------------------------------------- |
-| **GET** | `/dashboard/total-stats`    | Retorna total de fazendas e hectares cadastrados    |
-| **GET** | `/dashboard/land-use-stats` | Retorna percentual de área agricultável e vegetação |
+| **GET** | `/dashboard/total`    | Retorna total de fazendas e hectares cadastrados    |
+| **GET** | `/dashboard/land-use` | Retorna percentual de área agricultável e vegetação |
 | **GET** | `/dashboard/by-state`       | Retorna número de fazendas por estado               |
 | **GET** | `/dashboard/by-crop`        | Retorna número de culturas plantadas                |
 
@@ -172,12 +172,12 @@ Abaixo estão as principais rotas do sistema.
 
 ## 🛠 **Rodando Testes**
 
-Antes de rodar os testes, execute as **seeders** na seguinte ordem:
+Antes de rodar os testes, lembre de já ter executado as **seeders** na seguinte ordem:
 
 ```sh
-node ace db:seed --files "database/seeders/ProducerSeeder.ts"
-node ace db:seed --files "database/seeders/PropertySeeder.ts"
-node ace db:seed --files "database/seeders/PlantingSeeder.ts"
+node ace db:seed --files "database/seeders/producer_seeder.ts"
+node ace db:seed --files "database/seeders/property_seeder.ts"
+node ace db:seed --files "database/seeders/planting_seeder.ts"
 ```
 
 Agora, execute os **testes de unidade e integração**:
@@ -190,18 +190,14 @@ node ace test
 
 ## 📜 **Documentação OpenAPI**
 
-A API conta com documentação **OpenAPI (Swagger)** gerada automaticamente.
-
-Gere a documentação:
-
-```sh
-node ace generate:swagger
-```
-
-Acesse no navegador:
+A API conta com documentação **OpenAPI (Swagger)** gerada automaticamente. Para ter acesso, abra no navegador:
 
 ```sh
 http://localhost:3333/docs
 ```
+
+## **📌 Conclusão**
+
+Este projeto implementa um sistema completo para o gerenciamento de produtores rurais, garantindo boas práticas, testes automatizados e documentação detalhada.
 
 👨‍💻 Desenvolvido com ❤️ e AdonisJS. 🚀
