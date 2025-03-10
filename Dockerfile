@@ -17,4 +17,6 @@ WORKDIR /var/www
 COPY --from=installer /app/node_modules ./node_modules/
 COPY --from=builder /app/build ./build/
 RUN apk add --no-cache bash coreutils dumb-init
+COPY swagger.yml build/
+COPY swagger.json build/
 CMD ["node", "build/bin/server.js"]

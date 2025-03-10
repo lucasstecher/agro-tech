@@ -1,0 +1,1285 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Brain Agriculture",
+    "version": "1.0.0",
+    "description": "Bem vindo ao projeto do teste técnico Brain Agriculture! Feito com Adonisjs, combina um backend robusto com uma developer experience sensacional."
+  },
+  "components": {
+    "responses": {
+      "Forbidden": {
+        "description": "Access token is missing or invalid"
+      },
+      "Accepted": {
+        "description": "The request was accepted"
+      },
+      "Created": {
+        "description": "The resource has been created"
+      },
+      "NotFound": {
+        "description": "The resource has been created"
+      },
+      "NotAcceptable": {
+        "description": "The resource has been created"
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    },
+    "schemas": {
+      "Any": {
+        "description": "Any JSON object not defined as schema"
+      },
+      "Planting": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "propertyId": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "harvest": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "culture": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "createdAt": {
+            "type": "string",
+            "nullable": false,
+            "format": "date-time",
+            "example": "2021-03-23T16:13:08.489+01:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "nullable": false,
+            "format": "date-time",
+            "example": "2021-03-23T16:13:08.489+01:00"
+          }
+        },
+        "required": [
+          "id",
+          "propertyId",
+          "harvest",
+          "culture",
+          "createdAt",
+          "updatedAt"
+        ],
+        "description": "Planting (Interface)"
+      },
+      "Producer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "name": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "documentType": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "document": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "createdAt": {
+            "type": "string",
+            "nullable": false,
+            "format": "date-time",
+            "example": "2021-03-23T16:13:08.489+01:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "nullable": false,
+            "format": "date-time",
+            "example": "2021-03-23T16:13:08.489+01:00"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "documentType",
+          "document",
+          "createdAt",
+          "updatedAt"
+        ],
+        "description": "Producer (Interface)"
+      },
+      "Property": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "producerId": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "farmName": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "city": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "state": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "totalArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 468
+          },
+          "arableArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 429
+          },
+          "vegetationArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 321
+          },
+          "createdAt": {
+            "type": "string",
+            "nullable": false,
+            "format": "date-time",
+            "example": "2021-03-23T16:13:08.489+01:00"
+          },
+          "updatedAt": {
+            "type": "string",
+            "nullable": false,
+            "format": "date-time",
+            "example": "2021-03-23T16:13:08.489+01:00"
+          }
+        },
+        "required": [
+          "id",
+          "producerId",
+          "farmName",
+          "city",
+          "state",
+          "totalArea",
+          "arableArea",
+          "vegetationArea",
+          "createdAt",
+          "updatedAt"
+        ],
+        "description": "Property (Interface)"
+      },
+      "PaginationMeta": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "example": 100,
+            "nullable": false
+          },
+          "page": {
+            "type": "number",
+            "example": 2,
+            "nullable": false
+          },
+          "perPage": {
+            "type": "number",
+            "example": 10,
+            "nullable": false
+          },
+          "currentPage": {
+            "type": "number",
+            "example": 3,
+            "nullable": false
+          },
+          "lastPage": {
+            "type": "number",
+            "example": 10,
+            "nullable": false
+          },
+          "firstPage": {
+            "type": "number",
+            "example": 1,
+            "nullable": false
+          },
+          "lastPageUrl": {
+            "type": "string",
+            "example": "/?page=10",
+            "nullable": false
+          },
+          "firstPageUrl": {
+            "type": "string",
+            "example": "/?page=1",
+            "nullable": false
+          },
+          "nextPageUrl": {
+            "type": "string",
+            "example": "/?page=6",
+            "nullable": false
+          },
+          "previousPageUrl": {
+            "type": "string",
+            "example": "/?page=5",
+            "nullable": false
+          }
+        }
+      },
+      "PlantingPayload": {
+        "type": "object",
+        "properties": {
+          "harvest": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "culture": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          }
+        },
+        "required": [
+          "harvest",
+          "culture"
+        ],
+        "description": "PlantingPayload (Interface)"
+      },
+      "PlantingUpdatePayload": {
+        "type": "object",
+        "properties": {
+          "harvest": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "culture": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          }
+        },
+        "description": "PlantingUpdatePayload (Interface)"
+      },
+      "ProducerPayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "documentType": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "document": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          }
+        },
+        "required": [
+          "name",
+          "documentType",
+          "document"
+        ],
+        "description": "ProducerPayload (Interface)"
+      },
+      "ProducerUpdatePayload": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "documentType": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "document": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          }
+        },
+        "description": "ProducerUpdatePayload (Interface)"
+      },
+      "PropertyPayload": {
+        "type": "object",
+        "properties": {
+          "farmName": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "city": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "state": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "totalArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 71
+          },
+          "arableArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 793
+          },
+          "vegetationArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 964
+          }
+        },
+        "required": [
+          "farmName",
+          "city",
+          "state",
+          "totalArea",
+          "arableArea",
+          "vegetationArea"
+        ],
+        "description": "PropertyPayload (Interface)"
+      },
+      "PropertyUpdatePayload": {
+        "type": "object",
+        "properties": {
+          "farmName": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "city": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "state": {
+            "type": "string",
+            "nullable": false,
+            "example": "Lorem Ipsum"
+          },
+          "totalArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 42
+          },
+          "arableArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 510
+          },
+          "vegetationArea": {
+            "type": "number",
+            "nullable": false,
+            "example": 674
+          }
+        },
+        "description": "PropertyUpdatePayload (Interface)"
+      }
+    }
+  },
+  "paths": {
+    "/producers": {
+      "get": {
+        "summary": "Retorna todos os produtores (index)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/producer_controller.ts_ - **index**",
+        "operationId": "getProducers",
+        "parameters": [],
+        "tags": [
+          "PRODUCERS"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producer"
+                  }
+                },
+                "example": [
+                  {
+                    "id": "Lorem Ipsum",
+                    "name": "Lorem Ipsum",
+                    "documentType": "Lorem Ipsum",
+                    "document": "Lorem Ipsum",
+                    "createdAt": "2021-03-23T16:13:08.489+01:00",
+                    "updatedAt": "2021-03-23T16:13:08.489+01:00"
+                  }
+                ]
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Nenhum produtor encontrado"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Cadastrar produtor (store)",
+        "description": "Returns **201** (Created) as **text/plain**\n\n _app/controllers/producer_controller.ts_ - **store**",
+        "operationId": "createProducer",
+        "parameters": [],
+        "tags": [
+          "PRODUCERS"
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor cadastrado com sucesso"
+              }
+            },
+            "description": "Returns **201** (Created) as **text/plain**"
+          },
+          "400": {
+            "content": {
+              "text/plain": {
+                "example": "Dados inválidos"
+              }
+            },
+            "description": "Returns **400** (Bad Request) as **text/plain**"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProducerPayload"
+              },
+              "example": {
+                "name": "Lorem Ipsum",
+                "documentType": "Lorem Ipsum",
+                "document": "Lorem Ipsum"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/producers/{id}": {
+      "get": {
+        "summary": "Retorna um produtor (show)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/producer_controller.ts_ - **show**",
+        "operationId": "getProducerById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do produtor",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PRODUCERS"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producer"
+                },
+                "example": {
+                  "id": "Lorem Ipsum",
+                  "name": "Lorem Ipsum",
+                  "documentType": "Lorem Ipsum",
+                  "document": "Lorem Ipsum",
+                  "createdAt": "2021-03-23T16:13:08.489+01:00",
+                  "updatedAt": "2021-03-23T16:13:08.489+01:00"
+                }
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor não encontrado"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Atualizar produtor (update)",
+        "description": "Atualiza um produtor existente do sistema\n\n _app/controllers/producer_controller.ts_ - **update**",
+        "operationId": "updateProducer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do produtor",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PRODUCERS"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor atualizado com sucesso"
+              }
+            },
+            "description": "Returns **200** (OK) as **text/plain**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor não encontrado"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProducerUpdatePayload"
+              },
+              "example": {
+                "name": "Lorem Ipsum",
+                "documentType": "Lorem Ipsum",
+                "document": "Lorem Ipsum"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar produtor (delete)",
+        "description": "Remove um produtor existente do sistema\n\n _app/controllers/producer_controller.ts_ - **delete**",
+        "operationId": "deleteProducer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do produtor",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PRODUCERS"
+        ],
+        "responses": {
+          "204": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor removido com sucesso"
+              }
+            },
+            "description": "Returns **204** (No Content) as **text/plain**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor não encontrado"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      }
+    },
+    "/properties/producer/{id}": {
+      "get": {
+        "summary": "Retorna fazenda(s) do produtor (indexByProducer)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/property_controller.ts_ - **indexByProducer**",
+        "operationId": "getPropertyByProducer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do produtor",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PROPERTIES"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Property"
+                  }
+                },
+                "example": [
+                  {
+                    "id": "Lorem Ipsum",
+                    "producerId": "Lorem Ipsum",
+                    "farmName": "Lorem Ipsum",
+                    "city": "Lorem Ipsum",
+                    "state": "Lorem Ipsum",
+                    "totalArea": 468,
+                    "arableArea": 429,
+                    "vegetationArea": 321,
+                    "createdAt": "2021-03-23T16:13:08.489+01:00",
+                    "updatedAt": "2021-03-23T16:13:08.489+01:00"
+                  }
+                ]
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Nenhuma fazenda encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Cadastrar Fazenda (store)",
+        "description": "Returns **201** (Created) as **text/plain**\n\n _app/controllers/property_controller.ts_ - **store**",
+        "operationId": "createProperty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do produtor",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PROPERTIES"
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "text/plain": {
+                "example": "Fazenda cadastrada com sucesso"
+              }
+            },
+            "description": "Returns **201** (Created) as **text/plain**"
+          },
+          "400": {
+            "content": {
+              "text/plain": {
+                "example": "Dados inválidos"
+              }
+            },
+            "description": "Returns **400** (Bad Request) as **text/plain**"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PropertyPayload"
+              },
+              "example": {
+                "farmName": "Lorem Ipsum",
+                "city": "Lorem Ipsum",
+                "state": "Lorem Ipsum",
+                "totalArea": 71,
+                "arableArea": 793,
+                "vegetationArea": 964
+              }
+            }
+          }
+        }
+      }
+    },
+    "/properties/{id}": {
+      "get": {
+        "summary": "Retorna uma fazenda (show)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/property_controller.ts_ - **show**",
+        "operationId": "getPropertyById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da fazenda",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PROPERTIES"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                },
+                "example": {
+                  "id": "Lorem Ipsum",
+                  "producerId": "Lorem Ipsum",
+                  "farmName": "Lorem Ipsum",
+                  "city": "Lorem Ipsum",
+                  "state": "Lorem Ipsum",
+                  "totalArea": 468,
+                  "arableArea": 429,
+                  "vegetationArea": 321,
+                  "createdAt": "2021-03-23T16:13:08.489+01:00",
+                  "updatedAt": "2021-03-23T16:13:08.489+01:00"
+                }
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Produtor não encontrado"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Atualizar Fazenda (update)",
+        "description": "Atualiza uma fazenda existente do sistema\n\n _app/controllers/property_controller.ts_ - **update**",
+        "operationId": "updateProperty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da fazenda",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PROPERTIES"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/plain": {
+                "example": "Fazenda atualizada com sucesso"
+              }
+            },
+            "description": "Returns **200** (OK) as **text/plain**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Fazenda não encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PropertyUpdatePayload"
+              },
+              "example": {
+                "farmName": "Lorem Ipsum",
+                "city": "Lorem Ipsum",
+                "state": "Lorem Ipsum",
+                "totalArea": 42,
+                "arableArea": 510,
+                "vegetationArea": 674
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar fazenda (delete)",
+        "description": "Remove uma fazenda existente do sistema\n\n _app/controllers/property_controller.ts_ - **delete**",
+        "operationId": "deleteProperty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da fazenda",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PROPERTIES"
+        ],
+        "responses": {
+          "204": {
+            "content": {
+              "text/plain": {
+                "example": "Fazenda removida com sucesso"
+              }
+            },
+            "description": "Returns **204** (No Content) as **text/plain**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Fazenda não encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      }
+    },
+    "/plantings/property/{id}": {
+      "get": {
+        "summary": "Retorna cultura(s) da fazenda (indexByProperty)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/planting_controller.ts_ - **indexByProperty**",
+        "operationId": "getPlantingsByProperty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da fazenda",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PLANTINGS"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Planting"
+                  }
+                },
+                "example": [
+                  {
+                    "id": "Lorem Ipsum",
+                    "propertyId": "Lorem Ipsum",
+                    "harvest": "Lorem Ipsum",
+                    "culture": "Lorem Ipsum",
+                    "createdAt": "2021-03-23T16:13:08.489+01:00",
+                    "updatedAt": "2021-03-23T16:13:08.489+01:00"
+                  }
+                ]
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Nenhuma cultura encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Cadastrar cultura (store)",
+        "description": "Returns **201** (Created) as **text/plain**\n\n _app/controllers/planting_controller.ts_ - **store**",
+        "operationId": "createPlanting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da fazenda",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PLANTINGS"
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "text/plain": {
+                "example": "Cultura cadastrada com sucesso"
+              }
+            },
+            "description": "Returns **201** (Created) as **text/plain**"
+          },
+          "400": {
+            "content": {
+              "text/plain": {
+                "example": "Dados inválidos"
+              }
+            },
+            "description": "Returns **400** (Bad Request) as **text/plain**"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlantingPayload"
+              },
+              "example": {
+                "harvest": "Lorem Ipsum",
+                "culture": "Lorem Ipsum"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/plantings/{id}": {
+      "get": {
+        "summary": "Retorna cultura por ID (show)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/planting_controller.ts_ - **show**",
+        "operationId": "getPlantingById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da cultura",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PLANTINGS"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Planting"
+                },
+                "example": {
+                  "id": "Lorem Ipsum",
+                  "propertyId": "Lorem Ipsum",
+                  "harvest": "Lorem Ipsum",
+                  "culture": "Lorem Ipsum",
+                  "createdAt": "2021-03-23T16:13:08.489+01:00",
+                  "updatedAt": "2021-03-23T16:13:08.489+01:00"
+                }
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Cultura não encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Atualizar cultura (update)",
+        "description": "Atualiza uma cultura existente do sistema\n\n _app/controllers/planting_controller.ts_ - **update**",
+        "operationId": "updatePlanting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da cultura",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PLANTINGS"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/plain": {
+                "example": "Cultura atualizada com sucesso"
+              }
+            },
+            "description": "Returns **200** (OK) as **text/plain**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Cultura não encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlantingUpdatePayload"
+              },
+              "example": {
+                "harvest": "Lorem Ipsum",
+                "culture": "Lorem Ipsum"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar cultura (delete)",
+        "description": "Remove uma cultura existente do sistema\n\n _app/controllers/planting_controller.ts_ - **delete**",
+        "operationId": "deletePlanting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da cultura",
+            "schema": {
+              "example": "",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "PLANTINGS"
+        ],
+        "responses": {
+          "204": {
+            "content": {
+              "text/plain": {
+                "example": "Cultura removida com sucesso"
+              }
+            },
+            "description": "Returns **204** (No Content) as **text/plain**"
+          },
+          "404": {
+            "content": {
+              "text/plain": {
+                "example": "Cultura não encontrada"
+              }
+            },
+            "description": "Returns **404** (Not Found) as **text/plain**"
+          }
+        },
+        "security": []
+      }
+    },
+    "/dashboard/total": {
+      "get": {
+        "summary": "Métricas de fazendas e hectares (getTotalStats)",
+        "description": "Retorna total de fazendas e total de hectares cadastrados\n\n _app/controllers/property_controller.ts_ - **getTotalStats**",
+        "operationId": "getTotalStats",
+        "parameters": [],
+        "tags": [
+          "DASHBOARD"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/dashboard/land-use": {
+      "get": {
+        "summary": "Métricas de culturas (getLandUseStats)",
+        "description": "Retorna total de fazendas e total de hectares cadastrados\n\n _app/controllers/property_controller.ts_ - **getLandUseStats**",
+        "operationId": "getLandUseStats",
+        "parameters": [],
+        "tags": [
+          "DASHBOARD"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/dashboard/by-state": {
+      "get": {
+        "summary": "Métricas fazenda por estado (getPropertiesByState)",
+        "description": "Retorna quantidade de fazendas por estado\n\n _app/controllers/property_controller.ts_ - **getPropertiesByState**",
+        "operationId": "getPropertiesByState",
+        "parameters": [],
+        "tags": [
+          "DASHBOARD"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/dashboard/by-crop": {
+      "get": {
+        "summary": "Métricas culturas (getPropertiesByCrop)",
+        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/planting_controller.ts_ - **getPropertiesByCrop**",
+        "operationId": "getPropertiesByCrop",
+        "parameters": [],
+        "tags": [
+          "DASHBOARD"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Soja": 10,
+                    "Milho": 5
+                  }
+                },
+                "example": {
+                  "Soja": 10,
+                  "Milho": 5
+                }
+              }
+            },
+            "description": "Returns **200** (OK) as **application/json**"
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "PRODUCERS",
+      "description": "Everything related to PRODUCERS"
+    },
+    {
+      "name": "PROPERTIES",
+      "description": "Everything related to PROPERTIES"
+    },
+    {
+      "name": "PLANTINGS",
+      "description": "Everything related to PLANTINGS"
+    },
+    {
+      "name": "DASHBOARD",
+      "description": "Everything related to DASHBOARD"
+    }
+  ]
+}
