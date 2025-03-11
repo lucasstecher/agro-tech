@@ -1,6 +1,6 @@
 # 🌱 Gerenciador de Produtores Rurais
 
-Bem-vindo ao **Gerenciador de Produtores Rurais**, um sistema desenvolvido em **Node.js com AdonisJS** para cadastro e gerenciamento de produtores, fazendas e culturas plantadas.
+Bem-vindo ao **Agro Tech**, um sistema desenvolvido em **Node.js com AdonisJS** para cadastro e gerenciamento de produtores, fazendas e culturas plantadas.
 
 ## 🌎 O projeto já está no ar!
 Para acessá-lo, entre pelo link: https://agro-tech-production.up.railway.app/docs \
