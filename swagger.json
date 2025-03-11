@@ -170,7 +170,7 @@
           "arableArea": {
             "type": "number",
             "nullable": false,
-            "example": 100
+            "example": 200
           },
           "vegetationArea": {
             "type": "number",
