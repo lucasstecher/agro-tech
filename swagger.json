@@ -204,61 +204,6 @@
         ],
         "description": "Property (Interface)"
       },
-      "PaginationMeta": {
-        "type": "object",
-        "properties": {
-          "total": {
-            "type": "number",
-            "example": 100,
-            "nullable": false
-          },
-          "page": {
-            "type": "number",
-            "example": 2,
-            "nullable": false
-          },
-          "perPage": {
-            "type": "number",
-            "example": 10,
-            "nullable": false
-          },
-          "currentPage": {
-            "type": "number",
-            "example": 3,
-            "nullable": false
-          },
-          "lastPage": {
-            "type": "number",
-            "example": 10,
-            "nullable": false
-          },
-          "firstPage": {
-            "type": "number",
-            "example": 1,
-            "nullable": false
-          },
-          "lastPageUrl": {
-            "type": "string",
-            "example": "/?page=10",
-            "nullable": false
-          },
-          "firstPageUrl": {
-            "type": "string",
-            "example": "/?page=1",
-            "nullable": false
-          },
-          "nextPageUrl": {
-            "type": "string",
-            "example": "/?page=6",
-            "nullable": false
-          },
-          "previousPageUrl": {
-            "type": "string",
-            "example": "/?page=5",
-            "nullable": false
-          }
-        }
-      },
       "PlantingPayload": {
         "type": "object",
         "properties": {
@@ -428,7 +373,7 @@
     "/producers": {
       "get": {
         "summary": "Retorna todos os produtores (index)",
-        "description": "Returns **200** (OK) as **application/json**\n\n _app/controllers/producer_controller.ts_ - **index**",
+        "description": "Retorna todos os produtores cadastrados no sistema\n\n _app/controllers/producer_controller.ts_ - **index**",
         "operationId": "getProducers",
         "parameters": [],
         "tags": [
@@ -479,7 +424,7 @@
       },
       "post": {
         "summary": "Cadastrar produtor (store)",
-        "description": "Returns **201** (Created) as **text/plain**\n\n _app/controllers/producer_controller.ts_ - **store**",
+        "description": "Cadastra um novo produtor no sistema\n\n _app/controllers/producer_controller.ts_ - **store**",
         "operationId": "createProducer",
         "parameters": [],
         "tags": [
