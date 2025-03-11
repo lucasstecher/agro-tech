@@ -18,15 +18,41 @@ Para realizar as requisições pela API, utilize Postman, Insomnia ou pelo próp
 
 ---
 
+## 📂 **Estrutura de Pastas**
+O projeto segue a estrutura padrão do AdonisJS, organizada para manter a modularidade e a manutenção do código mais simples.
+
+```sh
+📦 projeto
+├── 📂 app                # Contém a lógica principal da aplicação (Controllers, Models, Services, Middlewares)
+│   ├── 📂 Controllers    # Arquivos responsáveis por lidar com as requisições HTTP
+│   ├── 📂 Models         # Definição das entidades do banco de dados
+│   ├── 📂 Services       # Lógica de negócios e regras de domínio
+│   ├── 📂 Interfaces     # Definição de interfaces para padronizar a comunicação entre camadas
+│   ├── 📂 Repositories   # Camada de abstração para acesso ao banco de dados
+│   ├── 📂 Exceptions     # Gerenciamento de exceções e erros personalizados
+│   ├── 📂 Middleware     # Interceptadores para processar requisições antes de chegarem aos controllers
+│   └── 📂 Validators     # Definições de validações de entrada de dados
+├── 📂 bin                # Scripts e arquivos executáveis do projeto
+├── 📂 config             # Arquivos de configuração da aplicação (database, auth, swagger, etc.)
+├── 📂 database           # Scripts de migração e seeds para o banco de dados
+│   ├── 📂 migrations     # Definição da estrutura das tabelas do banco de dados
+│   ├── 📂 seeders          # Dados iniciais para popular o banco
+├── 📂 start              # Arquivos de bootstrapping e configuração inicial do AdonisJS
+├── 📂 tests              # Testes automatizados da aplicação
+```
+
+---
+
 ## 📌 **Instalação e Configuração**
 
 ### Para rodar através do docker:
+1. **Clone o repositório**
 1. **Inclua todas as variáveis necessárias em seu .env:**
 ```sh
 TZ=UTC
 PORT=3333
 APP_KEY=4vzgfBBrc8PI8WVqLx9QM2wTnZXYuo6r
-NODE_ENV=production
+NODE_ENV=development
 DB_HOST=database
 DB_PORT=5432
 DB_USER=postgres
