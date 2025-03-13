@@ -13,6 +13,7 @@ Para realizar as requisições pela API, utilize Postman, Insomnia ou pelo próp
 - **PostgreSQL**
 - **Docker**
 - **Japa (Testes)**
+- **Pino (Logger)**
 - **Swagger (Documentação)**
 - **Lucid (ORM)**
 
